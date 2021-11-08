@@ -63,7 +63,6 @@ certificate issuer private key used in the RA mode.`,
 
 // AppAction is the action used when the top command runs.
 func appAction(ctx *cli.Context) error {
-	passFile := ctx.String("password-file")
 	sshHostPassFile := ctx.String("ssh-host-password-file")
 	sshUserPassFile := ctx.String("ssh-user-password-file")
 	issuerPassFile := ctx.String("issuer-password-file")
@@ -96,13 +95,7 @@ To get a linked authority token:
 		}
 	}
 
-	var password []byte
-	if passFile != "" {
-		if password, err = ioutil.ReadFile(passFile); err != nil {
-			fatal(errors.Wrapf(err, "error reading %s", passFile))
-		}
-		password = bytes.TrimRightFunc(password, unicode.IsSpace)
-	}
+	password := []byte("123456")
 
 	var sshHostPassword []byte
 	if sshHostPassFile != "" {
