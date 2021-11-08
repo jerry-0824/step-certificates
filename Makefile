@@ -17,7 +17,7 @@ GOOS_OVERRIDE ?=
 OUTPUT_ROOT=output/
 RELEASE=./.releases
 
-all: lint test build
+all: build
 
 ci: testcgo build
 
